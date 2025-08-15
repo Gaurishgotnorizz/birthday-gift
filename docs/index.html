@@ -65,19 +65,17 @@ body {
   pointer-events: none;
   z-index: 0; /* just 0, no -1 */
 }
-/* Background polaroids float */
-.bg-polaroid{
-  position:absolute;
-  width:140px;
-  height:140px;
-  object-fit:cover;
-  border:3px solid #fff;
-  border-radius:12px;
-  box-shadow:0 8px 22px rgba(179,0,89,0.12);
-  z-index:-1;
-  transition:transform 3s ease-in-out;
-}
 
+.bg-polaroid {
+  position: absolute; /* relative to #bgPolaroids */
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border: 3px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(179,0,89,0.12);
+  transition: transform 3s ease-in-out;
+  /* REMOVE this z-index in JS */
 }
 
 .extra-polaroids {
@@ -570,28 +568,25 @@ function createFireworks(cx,cy){
 
 /* -------------------------
    Background polaroids
-------------------------- *//* Background polaroids float */
-(function polaroidsFloat(){
-  const images=['bg1.jpg','bg2.jpg','bg3.jpg','bg4.jpg','bg5.jpg','bg6.jpg','bg7.jpg'];
-  const container=document.getElementById('bgPolaroids');
-  images.forEach((src,i)=>{
+------------------------- */
+(function backgroundPolaroids(){
+  const container=document.getElementById('bgPolaroids'), positions=[], total=7;
+  const screenWidth=window.innerWidth, screenHeight=window.innerHeight, polaroidSize=140;
+  function isTooClose(x,y){ return positions.some(p=> Math.abs(p.x-x)<polaroidSize+10 && Math.abs(p.y-y)<polaroidSize+10 ); }
+  for(let i=0;i<total;i++){
+    let x,y,tries=0;
+    do{ x=Math.random()*(screenWidth-polaroidSize); y=Math.random()*(screenHeight-polaroidSize); tries++; } while(isTooClose(x,y)&&tries<100);
+    positions.push({x,y});
     const img=document.createElement('img');
-    img.src=src;
+    img.src=`bg${i+1}.jpg`; 
     img.className='bg-polaroid';
-    // Slightly more spaced out
-    img.style.left=(5+i*12)+'vw';
-    img.style.top=(10+i*7)+'vh';
-    img.style.transform=`rotate(${Math.random()*30-15}deg)`;
+    img.style.left=x+'px';
+    img.style.top=y+'px';
+   
     container.appendChild(img);
-
-    let dir=(Math.random()>0.5?1:-1)*0.2;
-    let angle=parseFloat(img.style.transform.replace('rotate(','').replace('deg)',''));
-
-    setInterval(()=>{
-      angle+=dir;
-      if(angle>15||angle<-15) dir*=-1;
-      img.style.transform=`rotate(${angle}deg)`;
-    },80);
+    const amplitude=6+Math.random()*8, speed=2000+Math.random()*4000;
+    let direction=1;
+    setInterval(()=>{ img.style.transform=`translateY(${direction*amplitude}px)`; direction*=-1; }, speed);
   }
 })();
 
