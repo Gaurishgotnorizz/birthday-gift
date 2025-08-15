@@ -65,7 +65,6 @@ body {
   pointer-events: none;
   z-index: 0; /* just 0, no -1 */
 }
-
 .bg-polaroid {
   position: absolute; /* relative to #bgPolaroids */
   width: 140px;
@@ -75,7 +74,6 @@ body {
   border-radius: 12px;
   box-shadow: 0 8px 22px rgba(179,0,89,0.12);
   transition: transform 3s ease-in-out;
-  /* REMOVE this z-index in JS */
 }
 
 .extra-polaroids {
@@ -342,9 +340,15 @@ body {
 </div>
 
 <div class="section" style="padding-top:16px;">
-  <h2 style="font-family:Pacifico, cursive; margin-bottom:8px;">🌸 Surprise Spot 🌸</h2>
-  <p style="color:#fff7fb; margin:0 auto; max-width:700px;">[We can add something fun here later]</p>
+  <h2 style="font-family:Pacifico, cursive; margin-bottom:8px;">🌸🌸</h2>
+  <p style="color:#fff7fb; margin:0 auto; max-width:700px;">
+Your eyes like the sunlit fields of tulips, <br>
+And midas touch on your finger tips. <br>
+You're just so charming in my eyes, <br>
+Even Aphrodite out of envy cries.<br><br></p>
 </div>
+
+<div id="bgPolaroids"></div>
 
 <div class="section">
   
@@ -428,10 +432,7 @@ body {
 
 <div class="section">
   <div style="font-size:2.2rem; cursor:pointer;" onclick="document.getElementById('hiddenHeartMsg').style.display='block'">💗</div>
-  <div id="hiddenHeartMsg" style="display:none; margin-top:12px; color:#fff7fb; font-weight:700;">YOU'RE THE BESTEST THING EVER HAPPENED IN MY LIFE 💕</div>
-</div>
-
-<div id="bgPolaroids"></div>
+  <div id="hiddenHeartMsg" style="display:none; margin-top:12px; color:#fff7fb; font-weight:700;">I really hope you liked this<br> because isme lowkey mehnat lagi thi <br> and yeah, uh, that's it. This is Gaurish, signing out. Happy birthday <3.</div>
 <body>
 <script>
 /* ------------------ FLOATING HEARTS & BOWS ------------------ */
