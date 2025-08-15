@@ -63,7 +63,6 @@ h1{
   transition: transform 3s ease-in-out;
 }
 
-/* Extra round polaroids */
 .extra-polaroids {
     display: flex;
     justify-content: center;
@@ -77,7 +76,7 @@ h1{
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    overflow: visible; 
+    overflow: visible;
     animation: floatUpDown 4s ease-in-out infinite alternate;
 }
 
@@ -90,13 +89,11 @@ h1{
     box-shadow: 0 8px 20px rgba(255,105,180,0.15);
 }
 
-/* Floating animation */
 @keyframes floatUpDown {
     0% { transform: translateY(0px); }
     100% { transform: translateY(-12px); }
 }
 
-/* Sparkle particles inside each polaroid */
 .sparkle-container {
     position: absolute;
     top: 0; left: 0;
@@ -162,7 +159,7 @@ h1{
   font-size:1.02rem;
 }
 
-/* Poem (scroll reveal) */
+/* Poem */
 .poem {
   max-width:720px;
   margin: 40px auto;
@@ -207,6 +204,16 @@ h1{
   font-weight:600;
 }
 
+/* sparkle particles */
+.particle{
+  position:absolute;
+  pointer-events:none;
+  font-size:18px;
+  will-change: transform, opacity;
+  user-select:none;
+  z-index: 9999;
+}
+
 @media (max-width:520px){
   .gallery img{ width:120px; height:120px; border-radius:12px; }
   .hidden-pic img{ width:150px; height:150px; }
@@ -216,10 +223,12 @@ h1{
 </head>
 <body>
 
+<!-- Main Header -->
 <div class="section">
   <h1>🎀🎀 HAPPPPYYYYY BIRTTHDAAYYYYYY BWESSTTIEEEEEEEEE 🎀🎀</h1>
 </div>
 
+<!-- Name & Fun Info -->
 <div class="section">
   <h2 style="font-family:Pacifico, cursive; margin-bottom:8px;">💕</h2>
   <p style="max-width:760px; margin:0 auto; color: #fff7fb;">
@@ -228,6 +237,7 @@ h1{
   </p>
 </div>
 
+<!-- Gallery -->
 <div class="section">
   <h2 style="font-family:Pacifico, cursive; margin-bottom:10px;">😝😝HAPPIEST BIRTHDAY TO THE BEST SAHELI I COULD EVER GET💅</h2>
   <div class="gallery" id="gallery">
@@ -237,6 +247,7 @@ h1{
   </div>
 </div>
 
+<!-- Reveal hidden pics -->
 <div class="section">
   <h2 style="font-family:Pacifico, cursive; margin-bottom:8px;">Special gifts 🎁</h2>
   <div class="unlock-row">
@@ -249,6 +260,35 @@ h1{
   <div class="hidden-pic" id="hiddenPicContainer" aria-live="polite"></div>
 </div>
 
+<!-- Video reveal -->
+<div class="section">
+  <button id="revealVideoBtn" class="reveal-btn">For the best hg ever😝💅💅</button>
+  <div id="videoContainer" style="display:none; margin-top:12px; text-align:center;">
+    <video id="hiddenVideo" width="320" height="240" controls>
+      <source src="SaheliVideo.mp4" type="video/mp4">
+      Your browser cannot play this video 
+    </video>
+  </div>
+</div>
+
+<!-- Letter -->
+<div class="section">
+  <h2 style="font-family:Pacifico, cursive; margin-bottom:8px;">💖Because you never judged me💌</h2>
+  <div class="letter">
+    <br>HAPPIEST BIRTHDAY TO THE BESTEST GIRL BESTIE, BESTEST LISTENER AND YAPPER AND THE BESTEST SUPPORTER I WILL EVER HAVE IN MY NOT SO COOL LIFE ✨🎀✨💅🗣️🛐🛐🎀✨🎀💓💅🎀💗🤭😼🎀🪽💗❤💅💅💕🗣️😼🤭🎀✨🪽🛐🪽🤭💓🎀🪽💗🪽🤭💓💅🪽💅🪽 <br>
+   First of all don't ask me why I did this, tune hi bola tha mehenga gift nhi lena h toh maine bina paise kharch kare hi ye bana liya 😝😝🤙🤙 
+   Hu na mai smart? 😋😋💅 <br>
+   Okay but <br>
+   HAPPY BIRTHDAY TO YOU GNG YOU MAKE ME SO HAPPY LIKE OMMGGG GURLL 😭😭🫂 <br>
+   AND I LOVE YOUR VIBE AND HOW YOU ARE ALWAYS THERE TO LISTEN TO MY RANDI RONA EVEN THO YOU HAVE YOUR OWN PROBLEMS ❤️‍🩹❤️‍🩹ily gng ❤️‍🩹 <br>
+   And thank you for always being w me and never leaving my side even tho I lowkey don't deserve ts   <br>
+   You always give me a reason to now just end my life <br>
+   AND THANK YOU FOR BEING THE BESTEST SAHELI AND NEVER JUDGING ME EVEN THO I'M A WEIRDO AND ROTHDU✨✨🎀💓 LIKE FRR I'M SUCH A BIG ROTHDU <br>
+    ✨🎀✨🗣️🛐🛐🎀✨🎀💓💅🎀💗🤭😼🎀🪽💗❤💅💅🤭🎀✨🪽🛐🪽🤭💓🎀🪽💅✨✨💅🗣️🛐🛐🎀✨🎀💓💅🎀💗🤭😼🎀🪽💗❤💅💅💕🗣️😼🤭🎀✨🪽🛐🪽🤭💓🎀💅🪽💅🪽🪽💅🪽 <br>
+  </div>
+</div>
+
+<!-- Poem -->
 <div class="section poem" id="poemSection">
   <h2 style="font-family:Pacifico, cursive; margin-bottom:8px;">💅💖💅</h2>
   <div class="poem-line">Who is this girl,</div>
@@ -270,28 +310,113 @@ h1{
   <div class="poem-line">-Your saheli 😋</div>
 </div>
 
+<!-- Extra polaroids -->
 <div class="extra-polaroids">
-  <div class="polaroid-round">
-    <img src="Saheli19.jpg" alt="Extra Image 1">
-    <div class="sparkle-container"></div>
+    <div class="polaroid-round">
+        <img src="Saheli19.jpg" alt="Extra Image 1">
+        <div class="sparkle-container"></div>
+    </div>
+    <div class="polaroid-round">
+        <img src="Saheli20.jpg" alt="Extra Image 2">
+        <div class="sparkle-container"></div>
+    </div>
+</div>
+
+<!-- Emoji name -->
+<div class="section">
+    <div class="emoji-name">
+      🤩🎀🎀🎀🎀🎀🤩<br>
+        🎀🤩🤩🤩🤩🤩🤩<br>
+        🎀🤩🤩🤩🤩🤩🤩<br>
+        🎀🤩🤩🤩🤩🤩🤩<br>
+        🤩🎀🎀🎀🎀🎀🤩<br>
+        🤩🤩🤩🤩🤩🤩🎀<br>
+        🤩🤩🤩🤩🤩🤩🎀<br>
+        🤩🤩🤩🤩🤩🤩🎀<br>
+        🤩🎀🎀🎀🎀🎀🤩
+        <br><br>
+
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🎀🎀🎀🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩
+        <br><br>
+
+        🤩🤩🤩🎀🤩🤩🤩<br>
+        🤩🤩🎀🤩🎀🤩🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🎀🤩🤩🤩🤩🤩🎀<br>
+        🎀🎀🎀🎀🎀🎀🎀<br>
+        🎀🤩🤩🤩🤩🤩🎀<br>
+        🎀🤩🤩🤩🤩🤩🎀<br>
+        🎀🤩🤩🤩🤩🤩🎀
+        <br><br>
+
+        🤩🎀🎀🎀🎀🎀🤩<br>
+        🎀🤩🤩🤩🤩🤩🎀<br>
+        🎀🤩🤩🤩🤩🤩🤩<br>
+        🎀🤩🤩🤩🎀🎀🤩<br>
+        🎀🤩🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🤩🎀🎀🎀🎀🤩
+        <br><br>
+
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🎀🤩🤩🤩🎀🤩<br>
+        🤩🤩🎀🎀🎀🤩🤩
+        <br><br>
+
+        🎀🤩🤩🤩🤩🤩🎀<br>
+        🎀🎀🤩🤩🤩🤩🎀<br>
+        🎀🤩🎀🤩🤩🤩🎀<br>
+        🎀🤩🤩🎀🤩🤩🎀<br>
+        🎀🤩🤩🤩🎀🤩🎀<br>
+        🎀🤩🤩🤩🤩🎀🎀<br>
+        🎀🤩🤩🤩🤩🤩🎀
+    </div>
+</div>
+
+<!-- Compliments -->
+<div class="section">
+  <div class="compliments" id="complimentsBox" onclick="toggleCompliments()" tabindex="0">
+    Click this button too (And the heart at the bottom)
+    <div class="text" id="complimentText">
+       ANOTHER ONE CUZ I LOWKEY CAN'T STOP YAPPING LMAOOOO(you're the best listener tho)<br>
+    🎀✨THANK YOU SO MUCH FOR NEVER MAKING ME FEEL BAD FOR WHO I AM AND ALWAYS SUPPORTING ME 
+    SPECIALLY WITH THE GYM WALI PHOTOS BECAUSE I LOWKEY HATE MY BODY (I have body dysmorphia)✨🎀 <br>
+    💓✨AND ILY FOR BEING MY PILLAR OF STRENGTH CUZ ATP I LITERALLY NEED TO YAP TO YOU TO SUSTAIN MY LIFE NGL✨💓 <br>
+
+    💗🎀✨✨ AND THANK YOU SO MUCH FOR BEING MY BESTIE, MY SAHELI, MY HOMEGIRL, MY SUPPORTER, 
+    MY LIL HEADACHE AND THE REASON I ALWAYS OPEN MY PHONE EVEN WHEN I'M CRYING OR IN THE WORST OF THE MOOD 
+    BECAUSE YOU, YOU ARE THE REASON I'M ALWAYS SMILING LOOKING AT MY PHONE AND THE REASON I'M STILL BREATHING✨✨🎀💗 
+	<div>
   </div>
-  <div class="polaroid-round">
-    <img src="Saheli20.jpg" alt="Extra Image 2">
-    <div class="sparkle-container"></div>
-  </div>
+</div>
+
+<!-- Hidden heart message -->
+<div class="section">
+  <div style="font-size:2.2rem; cursor:pointer;" onclick="document.getElementById('hiddenHeartMsg').style.display='block'">💗</div>
+  <div id="hiddenHeartMsg" style="display:none; margin-top:12px; color:#fff7fb; font-weight:700;">
+    I really hope you liked this<br> because isme lowkey mehnat lagi thi <br> and yeah, uh, that's it</div>
+</div>
 </div>
 
 <div id="bgPolaroids"></div>
 
 <script>
-/* FLOATING HEARTS & BOWS */
+/* Floating hearts & bows */
 (function startFloaties(){
   const symbols=['💗','🎀'], colors=['#b30059','#ff3366'];
   function spawn(){
     const el=document.createElement('div');
     el.className='floatElem';
-    const sym=symbols[Math.floor(Math.random()*symbols.length)];
-    el.textContent=sym;
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
     el.style.color=colors[Math.floor(Math.random()*colors.length)];
     el.style.fontSize=(18+Math.random()*18)+'px';
     el.style.left=(Math.random()*96)+'vw';
@@ -326,7 +451,13 @@ h1{
   lines.forEach(l=>obs.observe(l));
 })();
 
-/* Hidden photos reveal */
+/* Compliments toggle */
+function toggleCompliments(){
+  const text=document.getElementById('complimentText');
+  text.style.display=(text.style.display==='block')?'none':'block';
+}
+
+/* Hidden pics reveal */
 let currentlyShownImg=null;
 function revealPic(button,imgSrc){
   const container=document.getElementById('hiddenPicContainer');
@@ -345,27 +476,99 @@ function showNewImg(container,imgSrc,button){
   currentlyShownImg=img;
 }
 
-/* Background polaroids float */
-(function backgroundPolaroids(){
-  const container=document.getElementById('bgPolaroids'), positions=[], total=7;
-  const screenWidth=window.innerWidth, screenHeight=window.innerHeight, polaroidSize=140;
-  function isTooClose(x,y){ return positions.some(p=> Math.abs(p.x-x)<polaroidSize+10 && Math.abs(p.y-y)<polaroidSize+10 ); }
-  for(let i=0;i<total;i++){
-    let x,y,tries=0;
-    do{ x=Math.random()*(screenWidth-polaroidSize); y=Math.random()*(screenHeight-polaroidSize); tries++; } while(isTooClose(x,y)&&tries<100);
-    positions.push({x,y});
-    const img=document.createElement('img');
-    img.src=`bg${i+1}.jpg`; 
-    img.className='bg-polaroid';
-    img.style.left=x+'px';
-    img.style.top=y+'px';
-    container.appendChild(img);
-    const amplitude=6+Math.random()*8, speed=2000+Math.random()*4000;
-    let direction=1;
-    setInterval(()=>{ img.style.transform=`translateY(${direction*amplitude}px)`; direction*=-1; }, speed);
+/* Gallery fireworks */
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('click',ev=>{
+    const rect=img.getBoundingClientRect();
+    createFireworks(rect.left+rect.width/2, rect.top+rect.height/2);
+  });
+});
+function createFireworks(cx,cy){
+  const symbols=['✨','💅'], count=22;
+  for(let i=0;i<count;i++){
+    const el=document.createElement('div');
+    el.className='particle';
+    el.textContent=symbols[Math.random()>0.5?0:1];
+    el.style.left=cx+'px';
+    el.style.top=cy+'px';
+    el.style.opacity=1;
+    el.style.fontSize=(12+Math.random()*18)+'px';
+    document.body.appendChild(el);
+    const angle=Math.random()*Math.PI*2;
+    const dist=40+Math.random()*120;
+    const duration=700+Math.random()*500;
+    const dx=Math.cos(angle)*dist;
+    const dy=Math.sin(angle)*dist;
+    const start=performance.now();
+    (function frame(t){
+      const elapsed=t-start;
+      const progress=Math.min(elapsed/duration,1);
+      el.style.transform=`translate(${dx*progress}px, ${dy*progress}px) scale(${1-progress*0.6})`;
+      el.style.opacity = String(1-progress);
+      if(progress<1) requestAnimationFrame(frame);
+      else el.remove();
+    })(start);
+  }
+}
+
+/* Sparkle cursor trail */
+(function sparkleTrail(){
+  let timeout;
+  document.addEventListener('mousemove',(e)=>{
+    if(timeout) clearTimeout(timeout);
+    spawnSparkle(e.pageX,e.pageY);
+    timeout=setTimeout(()=>timeout=null,30);
+  });
+  function spawnSparkle(x,y){
+    const el=document.createElement('div');
+    el.className='particle';
+    el.style.left=x+'px';
+    el.style.top=y+'px';
+    el.style.fontSize=(12+Math.random()*10)+'px';
+    el.textContent=Math.random()>0.5?'✨':'💅';
+    document.body.appendChild(el);
+    const duration=800+Math.random()*500;
+    const dx=(Math.random()-0.5)*40;
+    const dy=(Math.random()-0.5)*40;
+    const start=performance.now();
+    (function animate(t){
+      const elapsed=t-start;
+      const progress=Math.min(elapsed/duration,1);
+      el.style.transform=`translate(${dx*progress}px,${dy*progress}px) scale(${1-progress*0.6})`;
+      el.style.opacity = String(1-progress);
+      if(progress<1) requestAnimationFrame(animate);
+      else el.remove();
+    })(start);
   }
 })();
-</script>
 
+/* Video reveal */
+document.getElementById('revealVideoBtn').addEventListener('click',()=>{
+  const vidContainer=document.getElementById('videoContainer');
+  vidContainer.style.display=vidContainer.style.display==='block'?'none':'block';
+});
+
+/* Background polaroids float */
+(function polaroidsFloat(){
+  const images=['Saheli11.jpg','Saheli12.jpg','Saheli14.jpg','Saheli15.jpg','Saheli16.jpg'];
+  const container=document.getElementById('bgPolaroids');
+  images.forEach((src,i)=>{
+    const img=document.createElement('img');
+    img.src=src;
+    img.className='bg-polaroid';
+    img.style.left=(Math.random()*70+5)+'vw';
+    img.style.top=(Math.random()*60+10)+'vh';
+    img.style.transform=`rotate(${Math.random()*30-15}deg)`;
+    container.appendChild(img);
+    let dir=(Math.random()>0.5?1:-1)*0.2;
+    let angle=parseFloat(img.style.transform.replace('rotate(','').replace('deg)',''));
+    setInterval(()=>{
+      angle+=dir;
+      if(angle>15||angle<-15) dir*=-1;
+      img.style.transform=`rotate(${angle}deg)`;
+    },80);
+  });
+})();
+</script>
 </body>
 </html>
