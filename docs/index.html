@@ -371,6 +371,7 @@ body {
   </div>
 </div>
 
+<canvas id="fireworksCanvas"></canvas>
 	
  <div id="bgPolaroids" aria-hidden="true"></div>
 <div class="section">
@@ -565,7 +566,10 @@ Even Aphrodite out of envy cries.<br><br></p>
   <div style="font-size:2.2rem; cursor:pointer;" onclick="document.getElementById('hiddenHeartMsg').style.display='block'">💗</div>
   <div id="hiddenHeartMsg" style="display:none; margin-top:12px; color:#fff7fb; font-weight:700;">I really hope you liked this<br> because isme lowkey mehnat lagi thi <br> and yeah, uh, that's it. <br> This is Gaurish, signing out.<br> A Very Happy & Delightful Birthday <3.</div>
 
-<canvas id="fireworksCanvas"></canvas>
+<audio autoplay loop>
+  <source src="Testmusic.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
 
 
 <body>
@@ -599,15 +603,15 @@ function launchFireworks() {
   canvas.height = window.innerHeight;
 
   let particles = [];
-  const colors = ["#ff4b5c", "#ffb347", "#47ff8c", "#47d1ff", "#d447ff", "#fff176"];
+  const colors = ["#ff4b5c", "#ffb347", "#47ff8c", "#47d1ff", "#d447ff", "#fff176", "#fff050"];
 
   function Particle(x, y) {
     this.x = x;
     this.y = y;
-    this.radius = Math.random() * 3 + 2;
+    this.radius = Math.random() * 3 + 3;
     this.color = colors[Math.floor(Math.random() * colors.length)];
-    this.speedX = (Math.random() - 0.5) * 6;
-    this.speedY = (Math.random() - 0.5) * 6;
+    this.speedX = (Math.random() - 0.3) * 6;
+    this.speedY = (Math.random() - 0.3) * 6;
     this.alpha = 1;
 
     this.update = function () {
@@ -619,17 +623,17 @@ function launchFireworks() {
     this.draw = function () {
       ctx.globalAlpha = this.alpha;
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+      ctx.arc(this.x, this.y, this.radius, 8, Math.PI * 12, false);
       ctx.fillStyle = this.color;
       ctx.fill();
-      ctx.globalAlpha = 1;
+      ctx.globalAlpha = 7;
     };
   }
 
   function createFirework() {
     const x = canvas.width / 2;
     const y = canvas.height / 2;
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 100; i++) {
       particles.push(new Particle(x, y));
     }
   }
@@ -640,7 +644,7 @@ function launchFireworks() {
       p.update();
       p.draw();
       if (p.alpha <= 0) {
-        particles.splice(i, 1);
+        particles.splice(i, 3);
       }
     });
     if (particles.length > 0) {
