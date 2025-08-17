@@ -241,6 +241,41 @@ body {
   .hidden-pic img{ width:150px; height:150px; }
   .bg-polaroid{ width:100px; height:100px; }
 }
+
+/* --- Z-INDEX / STACKING FIX --- */
+:root { --z-bg: 0; --z-fx: 1; --z-content: 2; }
+
+/* Background polaroids: always behind */
+#bgPolaroids {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: var(--z-bg) !important;
+}
+
+/* Individual bg images */
+.bg-polaroid {
+  position: absolute;
+  z-index: 0 !important;
+}
+
+/* Floating hearts/bows behind content but above bg */
+.floatElem { z-index: var(--z-fx) !important; }
+
+/* Fireworks/sparkles on top (they should float over content) */
+.particle { z-index: 9999 !important; }
+
+/* All readable content above bg + floaties */
+.section,
+.letter,
+.poem,
+.emoji-name,
+.compliments,
+.unlock-row,
+.gallery,
+#videoContainer,
+#revealVideoBtn {
+  position: relative;
+  z-index: var(--z-content) !important;
 </style>
 </head>
 <body>
@@ -647,6 +682,7 @@ revealVideoBtn.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 
 
